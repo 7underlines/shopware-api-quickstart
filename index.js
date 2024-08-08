@@ -1,35 +1,37 @@
 import dotenv from 'dotenv';
-import {createFromPasswordAndLogin, createFromIntegration, Criteria} from '@thomaspeissl/shopware-admin-api-client';
+import { createFromPasswordAndLogin, createFromIntegration, Criteria } from '@thomaspeissl/shopware-admin-api-client';
 
 // Main async function
 async function main() {
-    // Load environment variables from .env file
-    dotenv.config();
+  // Load environment variables from .env file
+  dotenv.config();
 
-    // Access environment variables
-    const apiUrl = process.env.SHOPWARE_API_URL;
-    const clientId = process.env.SHOPWARE_API_CLIENT_ID;
-    const clientSecret = process.env.SHOPWARE_API_CLIENT_SECRET;
+  // Access environment variables
+  const apiUrl = process.env.SHOPWARE_API_URL;
+  const clientId = process.env.SHOPWARE_API_CLIENT_ID;
+  const clientSecret = process.env.SHOPWARE_API_CLIENT_SECRET;
 
-    // Create the API client
-    let api = await createFromPasswordAndLogin(apiUrl, clientId, clientSecret);
-    // let api = await createFromIntegration(apiUrl, clientId, clientSecret);
-    
-    // Your code to interact with the Shopware API
-    let repository = api.create('product');
-    let criteria = new Criteria();
-    criteria.limit = 1;
-    criteria.addFilter(Criteria.equals('parentId', null));
+  // Create the API client
+  let api = await createFromPasswordAndLogin(apiUrl, clientId, clientSecret);
+  // let api = await createFromIntegration(apiUrl, clientId, clientSecret);
 
-    let products = await repository.search(criteria, api.defaultContext());
+  // Your code to interact with the Shopware API
+  let repository = api.create('product');
+  let criteria = new Criteria();
+  criteria.limit = 1;
+  criteria.addFilter(Criteria.equals('parentId', null));
 
-    for (const product of products) {
-        console.log(product.name);
-        // product.name = 'Node Test';
-        // console.log(product.name);
-        // await repository.save(product, api.defaultContext()); // use this if you want to save the changes to this product directly (single update)
-    }
-    // await repository.sync(products, api.defaultContext()); // or if you update multiple products you can use this to save all changes at once (bulk update)
+  let products = await repository.search(criteria, api.defaultContext());
+
+  for (const product of products) {
+    console.log(product.name);
+    // product.name = 'Node Test';
+    // console.log(product.name);
+    // use this if you want to save the changes to this product directly (single update)
+    // await repository.save(product, api.defaultContext()); 
+  }
+  // or if you update multiple products you can use this to save all changes at once (bulk update)
+  // await repository.sync(products, api.defaultContext());
 }
 
 // Call the main function
