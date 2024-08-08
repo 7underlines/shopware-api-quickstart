@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  shop:
+    image: dockware/play:latest
+    ports:
+      - "80:80" # apache2

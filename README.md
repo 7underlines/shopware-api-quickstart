@@ -42,6 +42,16 @@ Run the example script to see the API in action:
 node index.js
 ```
 
+### Docker
+
+If you need a Shopware 6 instance to test the API and have Docker installed, you can start a Shopware 6 instance using the following command:
+
+```bash
+docker-compose up -d
+# or if you have a newer Docker version
+docker compose up -d
+```
+
 ## Customization
 
 Feel free to modify the example code and add your own logic to interact with the Shopware 6 Admin API as needed.
