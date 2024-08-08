@@ -8,26 +8,31 @@ This repository provides a quickstart template for working with the Shopware 6 A
 
 - Node.js and npm installed on your development machine.
 - Access to a Shopware 6 instance with API credentials.
+- Alternatively, a preconfigured Docker setup with dockware to start a Shopware 6 instance for testing. The credentials for the API are preconfigured in the `.env.example` file.
 
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/thomaspeissl/shopware-api-quickstart.git
 cd shopware-api-quickstart
 ```
 
 2. Install the dependencies:
+
 ```bash
 npm install
 ```
 
 3. Copy the example environment file and configure your Shopware 6 instance details:
+
 ```bash
 cp .env.example .env
 ```
 
 Then, open the .env file and replace the placeholder values with your actual Shopware API credentials:
+
 ```bash
 SHOPWARE_API_URL=https://your-shopware-instance.com
 SHOPWARE_API_CLIENT_ID=your-client-id
@@ -51,6 +56,8 @@ docker-compose up -d
 # or if you have a newer Docker version
 docker compose up -d
 ```
+
+The Docker setup uses dockware and is preconfigured. The API credentials are already set up in the .env.example file, so you can start testing immediately.
 
 ## Customization
 
