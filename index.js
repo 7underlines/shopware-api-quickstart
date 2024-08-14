@@ -45,8 +45,13 @@ async function shopware(api) {
     for (const entity of entities) {
       await handleEntity(entity)
     }
-    // save all changes at once (bulk update)
-    await repository.sync(entities, api.defaultContext());
+    // check if entities were changed
+    const { changeset, deletions } = repository.getSyncChangeset(entities);
+    if ( changeset.length > 0 || deletions.length > 0 ) {
+      console.log(`Changesets: ${changeset.length} / Deletions: ${deletions.length}`);
+      // save all changes at once (bulk update)
+      await repository.sync(entities, api.defaultContext());
+    }
     criteria.page++;
 
     // remove the break to process all pages
