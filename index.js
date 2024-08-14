@@ -35,9 +35,13 @@ async function shopware(api) {
   // criteria.addAssociation('children.cover');
   while (true) {
     let entities = await repository.search(criteria, api.defaultContext());
+    if (criteria.page < 2) {
+      console.log(`Entities total: ${entities.total} (limit: ${criteria.limit})`);
+    }
     if (entities.length < 1) {
       break;
     }
+    console.log(`Page: ${criteria.page} / ${Math.ceil(entities.total / criteria.limit)}`);
     for (const entity of entities) {
       handleEntity(entity)
     }
