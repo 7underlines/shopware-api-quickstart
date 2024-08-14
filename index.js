@@ -11,27 +11,46 @@ async function main() {
   const clientId = process.env.SHOPWARE_API_CLIENT_ID;
   const clientSecret = process.env.SHOPWARE_API_CLIENT_SECRET;
 
+  // Validate environment variables
+  if (!apiUrl || !clientId || !clientSecret) {
+    console.error('Missing required environment variables.');
+    process.exit(1);
+  }
+
   // Create the API client
   let api = await createFromPasswordAndLogin(apiUrl, clientId, clientSecret);
   // let api = await createFromIntegration(apiUrl, clientId, clientSecret);
 
-  // Your code to interact with the Shopware API
+  shopware(api)
+}
+
+// Your code to interact with the Shopware API
+async function shopware(api) {
   let repository = api.create('product');
   let criteria = new Criteria();
-  criteria.limit = 1;
+  // keep the limit below 200
+  criteria.limit = 10;
   criteria.addFilter(Criteria.equals('parentId', null));
-
-  let products = await repository.search(criteria, api.defaultContext());
-
-  for (const product of products) {
-    console.log(product.name);
-    // product.name = 'Node Test';
-    // console.log(product.name);
-    // use this if you want to save the changes to this product directly (single update)
-    // await repository.save(product, api.defaultContext()); 
+  // criteria.addFilter(Criteria.range('childCount', { gt: 1 }));
+  // criteria.addAssociation('children.cover');
+  while (true) {
+    let entities = await repository.search(criteria, api.defaultContext());
+    if (entities.length < 1) {
+      break;
+    }
+    for (const entity of entities) {
+      handleEntity(entity)
+    }
+    // save all changes at once (bulk update)
+    await repository.sync(entities, api.defaultContext());
+    criteria.page++;
   }
-  // or if you update multiple products you can use this to save all changes at once (bulk update)
-  // await repository.sync(products, api.defaultContext());
+}
+
+// Your code to handle the entity
+function handleEntity(entity) {
+  console.log(entity.name);
+  // entity.name = 'JS Test';
 }
 
 // Call the main function
