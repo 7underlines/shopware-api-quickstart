@@ -29,7 +29,7 @@ async function shopware(api) {
   let repository = api.create('product');
   let criteria = new Criteria();
   // keep the limit below 200
-  criteria.limit = 10;
+  criteria.limit = 1;
   criteria.addFilter(Criteria.equals('parentId', null));
   // criteria.addFilter(Criteria.range('childCount', { gt: 1 }));
   // criteria.addAssociation('children.cover');
@@ -48,6 +48,9 @@ async function shopware(api) {
     // save all changes at once (bulk update)
     await repository.sync(entities, api.defaultContext());
     criteria.page++;
+
+    // remove the break to process all pages
+    break;
   }
 }
 
