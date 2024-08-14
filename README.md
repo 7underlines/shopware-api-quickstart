@@ -1,6 +1,22 @@
 # Shopware API Quickstart
 
-This repository provides a quickstart template for working with the Shopware 6 Admin API using JavaScript. It's designed to help developers get up and running quickly with the essential setup needed to interact with the Shopware 6 Admin API.
+This repository provides a quickstart template specifically designed for working with the Shopware 6 Admin API using JavaScript. It is intended exclusively for developers who need to interact with the Shopware 6 Admin API. **Please note**: This template is not suitable for use with the Shopware Storefront API.
+
+If your goal is to create a frontend website and use Shopware 6 solely as a backend, you should utilize the official Shopware API client instead: [@shopware/api-client](https://www.npmjs.com/package/@shopware/api-client).
+
+## Differences Between This Client and the Official Shopware API Client
+
+### Purpose:
+
+- **This Client**: Designed for the Shopware 6 Admin API, making backend tasks like editing products and bulk updates straightforward. Ideal for developers managing and automating backend operations.
+
+- **Official Client**: Focused on the Shopware Storefront API, optimized for frontend development. Best for retrieving data to build and manage e-commerce websites.
+
+### Use Case:
+
+- **This Client**: Ideal for developers who need to automate backend tasks, perform bulk updates, or directly manipulate the data within the Shopware Admin system. It's a great tool for those looking to script complex operations or manage large datasets in Shopware's backend.
+
+- **Official Client**: Best suited for developers building frontend applications that rely on data from Shopware. It helps in fetching the necessary data to populate a storefront, handle customer interactions, and manage orders and checkout processes.
 
 ## Getting Started
 
