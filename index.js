@@ -43,7 +43,7 @@ async function shopware(api) {
     }
     console.log(`Page: ${criteria.page} / ${Math.ceil(entities.total / criteria.limit)}`);
     for (const entity of entities) {
-      handleEntity(entity)
+      await handleEntity(entity)
     }
     // save all changes at once (bulk update)
     await repository.sync(entities, api.defaultContext());
@@ -52,7 +52,7 @@ async function shopware(api) {
 }
 
 // Your code to handle the entity
-function handleEntity(entity) {
+async function handleEntity(entity) {
   console.log(entity.name);
   // entity.name = 'JS Test';
 }
