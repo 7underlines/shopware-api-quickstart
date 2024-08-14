@@ -28,7 +28,7 @@ async function main() {
 async function shopware(api) {
   let repository = api.create('product');
   let criteria = new Criteria();
-  // keep the limit below 200
+  // Keep the limit below 200
   criteria.limit = 1;
   criteria.addFilter(Criteria.equals('parentId', null));
   // criteria.addFilter(Criteria.range('childCount', { gt: 1 }));
@@ -46,16 +46,17 @@ async function shopware(api) {
       await handleEntity(entity)
     }
 
-    // optional: show statistics if changes are about to be saved
+    // Optional: show statistics if changes are about to be saved
     const { changeset, deletions } = repository.getSyncChangeset(entities);
     if ( changeset.length > 0 || deletions.length > 0 ) {
       console.log(`Changesets: ${changeset.length} / Deletions: ${deletions.length}`);
     }
 
-    // save all changes at once (bulk update)
+    // Save all changes at once (bulk update)
     await repository.sync(entities, api.defaultContext());
     criteria.page++;
-    // remove the break to process all pages
+    
+    // Optional: break after the first page
     break;
   }
 }
@@ -63,7 +64,9 @@ async function shopware(api) {
 // Your code to handle the entity
 async function handleEntity(entity) {
   console.log(entity.name);
+  // You can modify the entity here
   // entity.name = 'JS Test';
+  // entity.stock = 1;
 }
 
 // Call the main function
