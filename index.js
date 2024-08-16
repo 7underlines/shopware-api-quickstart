@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import { createFromPasswordAndLogin, createFromIntegration, Criteria } from '@thomaspeissl/shopware-admin-api-client';
+import { create, Criteria } from '@thomaspeissl/shopware-admin-api-client';
 
 // Main async function
 async function main() {
@@ -18,7 +18,7 @@ async function main() {
   }
 
   // Create the API client
-  let api = await createFromPasswordAndLogin(apiUrl, clientId, clientSecret);
+  let api = await create(apiUrl, clientId, clientSecret);
   // let api = await createFromIntegration(apiUrl, clientId, clientSecret);
 
   shopware(api)
