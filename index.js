@@ -19,7 +19,6 @@ async function main() {
 
   // Create the API client
   let api = await create(apiUrl, clientId, clientSecret);
-  // let api = await createFromIntegration(apiUrl, clientId, clientSecret);
 
   shopware(api)
 }
