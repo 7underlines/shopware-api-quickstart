@@ -19,8 +19,8 @@ async function main() {
 
   // Create the API client
   let api = await create(apiUrl, clientId, clientSecret);
-
-  shopware(api)
+  await shopware(api)
+  console.log('Done.');
 }
 
 // Your code to interact with the Shopware API
