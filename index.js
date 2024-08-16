@@ -14,7 +14,7 @@ async function main() {
   // Validate environment variables
   if (!apiUrl || !clientId || !clientSecret) {
     console.error('Missing required environment variables.');
-    process.exit(1);
+    return;
   }
 
   // Create the API client
