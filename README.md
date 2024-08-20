@@ -4,6 +4,8 @@ This repository provides a quickstart template specifically designed for working
 
 If your goal is to create a frontend website and use Shopware 6 solely as a backend, you should utilize the official Shopware API client instead: [@shopware/api-client](https://www.npmjs.com/package/@shopware/api-client).
 
+This templates uses this Shopware 6 Admin API client: [Shopware 6 Admin API Client](https://github.com/7underlines/js-shopware-admin-api-client).
+
 ## Differences Between This Client and the Official Shopware API Client
 
 ### Purpose:
@@ -31,7 +33,7 @@ If your goal is to create a frontend website and use Shopware 6 solely as a back
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/thomaspeissl/shopware-api-quickstart.git
+git clone https://github.com/7underlines/shopware-api-quickstart.git
 cd shopware-api-quickstart
 ```
 
