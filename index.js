@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import { create, Criteria } from '@thomaspeissl/shopware-admin-api-client';
+import { create, Criteria } from 'shopware-admin-api-client';
 
 // Main async function
 async function main() {
