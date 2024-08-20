@@ -57,6 +57,16 @@ SHOPWARE_API_CLIENT_ID=your-client-id
 SHOPWARE_API_CLIENT_SECRET=your-client-secret
 ```
 
+**Important Notes:**
+
+- **Client ID and Secret:** You can use your Shopware API Client ID and Secret as usual.
+
+- **Username and Password:** Alternatively, you can use your Shopware admin username as `SHOPWARE_API_CLIENT_ID` and your password as `SHOPWARE_API_CLIENT_SECRET` for authentication.
+
+- **Generating API Credentials:** You can generate the Shopware Admin API credentials in your Shopware backend under **Settings > System > Integrations**. These credentials can also be used for authentication.
+
+Make sure to keep your `.env` file secure and do not share your credentials.
+
 ## Usage
 
 Run the example script to see the API in action:
