@@ -27,7 +27,7 @@ async function main() {
 async function shopware(api) {
   let repository = api.create('product');
   let criteria = new Criteria();
-  // Keep the limit below 200
+  // Keep limit below 200
   criteria.limit = 1;
   criteria.addFilter(Criteria.equals('parentId', null));
   // criteria.addFilter(Criteria.range('childCount', { gt: 1 }));
@@ -64,7 +64,7 @@ async function shopware(api) {
 async function handleEntity(entity) {
   console.log(entity.name);
   // You can modify the entity here
-  // entity.name = 'JS Test';
+  // entity.name += '3';
   // entity.stock = 1;
 }
 
