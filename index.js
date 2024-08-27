@@ -27,7 +27,6 @@ async function main() {
 async function shopware(api) {
   let repository = api.create('product');
   let criteria = new Criteria();
-  // Keep limit below 200
   criteria.limit = 1;
   criteria.addFilter(Criteria.equals('parentId', null));
   // criteria.addFilter(Criteria.range('childCount', { gt: 1 }));
