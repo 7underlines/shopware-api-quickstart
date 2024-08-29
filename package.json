@@ -10,7 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "shopware-admin-api-client": "^1.2.2",
+    "shopware-admin-api-client": "^1.2.3",
     "dotenv": "^16.4.5"
   }
 }
