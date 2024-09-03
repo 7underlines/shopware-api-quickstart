@@ -4,13 +4,13 @@ This repository provides a quickstart template specifically designed for working
 
 If your goal is to create a frontend website and use Shopware 6 solely as a backend, you should utilize the official Shopware API client instead: [@shopware/api-client](https://www.npmjs.com/package/@shopware/api-client).
 
-This templates uses this Shopware 6 Admin API client: [Shopware 6 Admin API Client](https://github.com/7underlines/js-shopware-admin-api-client).
+This template uses this Shopware 6 Admin API client: [Shopware 6 Admin API Client](https://github.com/7underlines/js-shopware-admin-api-client).
 
 ## Differences Between This Client and the Official Shopware API Client
 
 ### Purpose:
 
-- **This Client**: Designed for the Shopware 6 Admin API, making backend tasks like editing products and bulk updates straightforward. Ideal for developers managing and automating backend operations.
+- **This Client**: Designed for the Shopware 6 Admin API, making backend tasks like editing products and bulk updates straightforward. It's ideal for developers managing and automating backend operations.
 
 - **Official Client**: Focused on the Shopware Storefront API, optimized for frontend development. Best for retrieving data to build and manage e-commerce websites.
 
@@ -28,13 +28,18 @@ This templates uses this Shopware 6 Admin API client: [Shopware 6 Admin API Clie
 - Access to a Shopware 6 instance with API credentials.
 - Alternatively, a preconfigured Docker setup with dockware to start a Shopware 6 instance for testing. The credentials for the API are preconfigured in the `.env.example` file.
 
-### Installation
+### Using This Template
 
-1. Clone the repository:
+On GitHub, click on "Use this template" to create a new repository based on this template.  
+Alternatively, you can use this link: [Use this template](https://github.com/new?template_name=shopware-api-quickstart&template_owner=7underlines)
+
+After creating your repository, follow these steps to set up the project:
+
+1. Clone your repository:
 
 ```bash
-git clone https://github.com/7underlines/shopware-api-quickstart.git
-cd shopware-api-quickstart
+git clone https://github.com/your-username/your-repository.git
+cd your-repository
 ```
 
 2. Install the dependencies:
