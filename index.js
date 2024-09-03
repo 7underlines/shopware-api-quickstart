@@ -50,7 +50,7 @@ async function shopware(api) {
       console.log(`Changesets: ${changeset.length} / Deletions: ${deletions.length}`);
     }
 
-    // Save all changes at once (bulk update)
+    // Save all entities at once (bulk update)
     await repository.sync(entities, api.defaultContext());
     criteria.page++;
     
