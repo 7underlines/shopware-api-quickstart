@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import { create, Criteria } from 'shopware-admin-api-client';
+import fs from 'fs';
 
 // Main async function
 async function main() {
@@ -48,6 +49,11 @@ async function shopware(api) {
     const { changeset, deletions } = repository.getSyncChangeset(entities);
     if ( changeset.length > 0 || deletions.length > 0 ) {
       console.log(`Changesets: ${changeset.length} / Deletions: ${deletions.length}`);
+      // Optional: log changes to a file
+      for (const entity of changeset) {
+        const change = new Date().toISOString() + ' ' + JSON.stringify(entity.changes) + '\n';
+        fs.appendFileSync('changes.log', change);
+      }
     }
 
     // Save all entities at once (bulk update)
