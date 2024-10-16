@@ -7,19 +7,14 @@ async function main() {
   // Load environment variables from .env file
   dotenv.config();
 
-  // Access environment variables
-  const apiUrl = process.env.SHOPWARE_API_URL;
-  const clientId = process.env.SHOPWARE_API_CLIENT_ID;
-  const clientSecret = process.env.SHOPWARE_API_CLIENT_SECRET;
-
   // Validate environment variables
-  if (!apiUrl || !clientId || !clientSecret) {
+  if (!process.env.SHOPWARE_API_URL || !process.env.SHOPWARE_API_CLIENT_ID || !process.env.SHOPWARE_API_CLIENT_SECRET) {
     console.error('Missing required environment variables.');
     return;
   }
 
   // Create the API client
-  let api = await create(apiUrl, clientId, clientSecret);
+  let api = await create(process.env.SHOPWARE_API_URL, process.env.SHOPWARE_API_CLIENT_ID, process.env.SHOPWARE_API_CLIENT_SECRET);
   await shopware(api)
   console.log('Done.');
 }
