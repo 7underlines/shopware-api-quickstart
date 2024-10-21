@@ -25,7 +25,7 @@ async function shopware(api) {
   let criteria = new Criteria();
   criteria.limit = 1;
   criteria.addFilter(Criteria.equals('parentId', null));
-  // criteria.addFilter(Criteria.range('childCount', { gt: 1 }));
+  // criteria.addFilter(Criteria.range('childCount', { gt: 0 }));
   // criteria.addAssociation('children.cover');
   while (true) {
     let entities = await repository.search(criteria, api.defaultContext());
