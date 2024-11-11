@@ -42,7 +42,7 @@ async function shopware(api) {
 
     // Optional: show statistics if changes are about to be saved
     const { changeset, deletions } = repository.getSyncChangeset(entities);
-    if ( changeset.length > 0 || deletions.length > 0 ) {
+    if (changeset.length > 0 || deletions.length > 0) {
       console.log(`Changesets: ${changeset.length} / Deletions: ${deletions.length}`);
       // Optional: log changes to a file
       for (const entity of changeset) {
@@ -54,7 +54,7 @@ async function shopware(api) {
     // Save all entities at once (bulk update)
     await repository.sync(entities, api.defaultContext());
     criteria.page++;
-    
+
     // Optional: break after the first page
     break;
   }
@@ -70,5 +70,9 @@ async function handleEntity(entity) {
 
 // Call the main function
 main().catch((error) => {
+  // check if error.response.data.errors exists - that means it's an API error
+  if (error.response && error.response.data && error.response.data.errors) {
+    error = error.response.data.errors;
+  }
   console.error('Error in main function:', error);
 });
