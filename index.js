@@ -28,7 +28,10 @@ async function shopware(api) {
   // criteria.addFilter(Criteria.range('childCount', { gt: 0 }));
   // criteria.addAssociation('children.cover');
   while (true) {
-    let entities = await repository.search(criteria, api.defaultContext());
+    const context = api.defaultContext();
+    // Optional: enable inheritance
+    context.inheritance = true;
+    let entities = await repository.search(criteria, context);
     if (criteria.page < 2) {
       console.log(`Entities total: ${entities.total} (limit: ${criteria.limit})`);
     }
