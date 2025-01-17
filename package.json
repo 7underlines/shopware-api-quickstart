@@ -11,6 +11,6 @@
   "description": "",
   "dependencies": {
     "shopware-admin-api-client": "^1.2.5",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.7"
   }
 }
