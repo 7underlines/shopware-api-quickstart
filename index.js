@@ -23,10 +23,10 @@ async function main() {
 async function shopware(api) {
   let repository = api.create('product');
   let criteria = new Criteria();
-  criteria.limit = 1;
+  // criteria.limit = 3;
   criteria.addFilter(Criteria.equals('parentId', null));
   // criteria.addFilter(Criteria.range('childCount', { gt: 0 }));
-  // criteria.addAssociation('children.cover');
+  criteria.addAssociation('visibilities');
   while (true) {
     const context = api.defaultContext();
     // Optional: enable inheritance
@@ -40,7 +40,7 @@ async function shopware(api) {
     }
     console.log(`Page: ${criteria.page} / ${Math.ceil(entities.total / criteria.limit)}`);
     for (const entity of entities) {
-      await handleEntity(entity)
+      await handleEntity(entity, api)
     }
 
     // Optional: show statistics if changes are about to be saved
@@ -59,16 +59,31 @@ async function shopware(api) {
     criteria.page++;
 
     // Optional: break after the first page
-    break;
+    // break;
   }
 }
 
 // Your code to handle the entity
-async function handleEntity(entity) {
-  console.log(entity.name);
-  // You can modify the entity here
-  // entity.name += '3';
-  // entity.stock = 1;
+async function handleEntity(entity, api) {
+  // console.log(entity.id);
+  // console.log(entity.name);
+  // console.log(entity.visibilities.length);
+  if ( entity.visibilities.length < 1 ) {
+  console.log(entity.productNumber);
+
+      let repository = api.create('product_visibility');
+  let visibility = repository.create()
+  visibility.salesChannelId = '76c506c9703349bf9df439ecb2d2bafa';
+  visibility.visibility = 30;
+  entity.visibilities = [];
+  entity.visibilities.push(visibility);
+    // console.log('No visibilities found for this entity.');
+    // You can modify the entity here
+    // entity.name += '3';
+    // entity.stock = 1;
+
+    // process.exit(0);
+  }
 }
 
 // Call the main function
