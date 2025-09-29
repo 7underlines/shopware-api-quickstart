@@ -2,7 +2,6 @@ import dotenv from 'dotenv';
 import { create, Criteria } from 'shopware-admin-api-client';
 import fs from 'fs';
 
-// Main async function
 async function main() {
   // Load environment variables from .env file
   dotenv.config();
@@ -71,11 +70,4 @@ async function handleEntity(entity) {
   // entity.stock = 1;
 }
 
-// Call the main function
-main().catch((error) => {
-  // check if error.response.data.errors exists - that means it's an API error
-  if (error.response && error.response.data && error.response.data.errors) {
-    error = error.response.data.errors;
-  }
-  console.error('Error in main function:', error);
-});
+main()
