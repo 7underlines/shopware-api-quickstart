@@ -1,7 +1,5 @@
 # Shopware API Quickstart
 
-**Note:** The plain admin/shopware login from the .env.example seems to no longer work with Shopware 6.7+. You need to use Shopware API credentials generated in the Shopware backend (Settings->System->Integrations).
-
 This repository provides a quickstart template specifically designed for working with the Shopware 6 Admin API using JavaScript. It is intended exclusively for developers who need to interact with the Shopware 6 Admin API. **Please note**: This template is not suitable for use with the Shopware Storefront API.
 
 If your goal is to create a frontend website and use Shopware 6 solely as a backend, you should utilize the official Shopware API client instead: [@shopware/api-client](https://www.npmjs.com/package/@shopware/api-client).
