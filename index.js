@@ -8,12 +8,14 @@ async function main() {
 
   // Validate environment variables
   if (!process.env.SHOPWARE_API_URL || !process.env.SHOPWARE_API_CLIENT_ID || !process.env.SHOPWARE_API_CLIENT_SECRET) {
-    console.error('Missing required environment variables.');
-    return;
+    console.warn('Missing required environment variables - using default values for local development.');
   }
+  const api_url = process.env.SHOPWARE_API_URL || 'http://localhost';
+  const api_client_id = process.env.SHOPWARE_API_CLIENT_ID || 'admin';
+  const api_client_secret = process.env.SHOPWARE_API_CLIENT_SECRET || 'shopware';
 
   // Create the API client
-  let api = await create(process.env.SHOPWARE_API_URL, process.env.SHOPWARE_API_CLIENT_ID, process.env.SHOPWARE_API_CLIENT_SECRET);
+  let api = await create(api_url, api_client_id, api_client_secret);
   await shopware(api)
   console.log('Done.');
 }
